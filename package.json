@@ -1,0 +1,25 @@
+{
+  "name": "allpurposecpq",
+  "version": "1.0.0",
+  "description": "**Steps completed:** 1. Created Maven project with Spring Boot 3.5.7. 2. Configured Java 17 compiler. 3. Changed default server port to `8081` in `application.properties`. 4. Added test REST controller (`/api/hello`). 5. Enabled CORS for frontend (`http://localhost:5173`).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n BACKEND,FRONTEND \"cd Backend && ./mvnw spring-boot:run\" \"cd Frontend && npm run dev\"",
+    "install:all": "cd Frontend && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrinX019/AllPurposeCPQ.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FrinX019/AllPurposeCPQ/issues"
+  },
+  "homepage": "https://github.com/FrinX019/AllPurposeCPQ#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
