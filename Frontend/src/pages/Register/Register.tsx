@@ -1,5 +1,6 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import "../Login/Login.css";
+import logoAllCpq from "../../assets/logo_allCPQ.png";
 
 function Register() {
     const [username, setUsername] = useState("");
@@ -7,6 +8,13 @@ function Register() {
     const [email, setEmail] = useState("");
     const [domain, setDomain] = useState("");
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        document.title = "allCPQ | Register";
+        return () => {
+            document.title = "allCPQ";
+        };
+    }, []);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,7 +32,9 @@ function Register() {
         <div className="auth-page">
             <div className="auth-shell auth-shell-split">
                 <section className="auth-left">
-                    <div className="auth-logo">Logo</div>
+                    <div className="auth-logo">
+                        <img src={logoAllCpq} alt="AllCPQ logo" />
+                    </div>
                     <h1 className="auth-title">Create Your ApAdmin Account</h1>
                     <div className="auth-accent-line" />
                 </section>

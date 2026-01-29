@@ -1,10 +1,18 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import "./Login.css";
+import logoAllCpq from "../../assets/logo_allCPQ.png";
 
  function Login() {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+ const [password, setPassword] = useState("");
+ const [error, setError] = useState("");
+
+    useEffect(() => {
+        document.title = "allCPQ | Login";
+        return () => {
+            document.title = "allCPQ";
+        };
+    }, []);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,7 +33,9 @@ import "./Login.css";
         <div className="auth-page">
             <div className="auth-shell auth-shell-split">
                 <section className="auth-left">
-                    <div className="auth-logo">Logo</div>
+                    <div className="auth-logo">
+                        <img src={logoAllCpq} alt="AllCPQ logo" />
+                    </div>
                     <h1 className="auth-title">Login to Your ApAdmin Account</h1>
                     <div className="auth-accent-line" />
                 </section>
