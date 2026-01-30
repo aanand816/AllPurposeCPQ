@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
 import Api from "./pages/Api/Api";
@@ -16,15 +15,15 @@ import PackageOffered from "./pages/Config/PackageOffered";
 import { isLoggedIn } from "./services/auth";
 
 function RequireAuth({ children }: { children: JSX.Element }) {
-    return isLoggedIn() ? children : <Navigate to="/login" replace />;
+    return isLoggedIn() ? children : <Navigate to="/?login=1" replace />;
 }
 
 export default function App() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Home forceLoginOpen />} />
+            <Route path="/register" element={<Home forceRegisterOpen />} />
             <Route
                 path="/api"
                 element={

@@ -1,8 +1,9 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import logoAllCpq from "../../assets/logo_allCPQ.png";
+import logoClient from "../../assets/logo_client.png";
 import "../../pages/Config/Config.css";
-import { isLoggedIn, setLoggedIn } from "../../services/auth";
+import { AUTH_EVENT, isLoggedIn, setLoggedIn } from "../../services/auth";
 
 function AppTopbar() {
     const location = useLocation();
@@ -16,7 +17,13 @@ function AppTopbar() {
     useEffect(() => {
         setLoggedInState(isLoggedIn());
         setMenuOpen(false);
-    }, [location.pathname]);
+    }, [location.pathname, location.search]);
+
+    useEffect(() => {
+        const handleAuthChange = () => setLoggedInState(isLoggedIn());
+        window.addEventListener(AUTH_EVENT, handleAuthChange);
+        return () => window.removeEventListener(AUTH_EVENT, handleAuthChange);
+    }, []);
 
     const handleSignOut = () => {
         setLoggedIn(false);
@@ -28,7 +35,10 @@ function AppTopbar() {
     return (
         <header className="config-topbar">
             <div className="config-brand">
-                <img src={logoAllCpq} alt="AllCPQ logo" />
+                <img
+                    src={loggedIn ? logoClient : logoAllCpq}
+                    alt={loggedIn ? "Client logo" : "AllCPQ logo"}
+                />
             </div>
             <nav className="config-nav">
                 <NavLink className={navClass} to="/">

@@ -4,34 +4,33 @@ import "./Config.css";
 function Rates() {
     return (
         <ConfigLayout title="Define Product Rates" activeSide="app-settings" activeTab="rates">
-            <section className="config-card">
-                <div className="config-card-header">
-                    <h2>Rate Table</h2>
-                    <span className="config-badge">Updated Today</span>
+            <section className="config-card config-rate-card">
+                <div className="config-rate-grid">
+                    <label className="config-field">
+                        <span>Question</span>
+                        <select defaultValue="paint">
+                            <option value="paint">Paint</option>
+                            <option value="finish">Finish</option>
+                            <option value="coverage">Coverage</option>
+                        </select>
+                    </label>
+                    <label className="config-field">
+                        <span>When Answer Is</span>
+                        <input type="text" defaultValue="Yes" />
+                    </label>
+                    <label className="config-field">
+                        <span>Price</span>
+                        <input type="text" defaultValue="499.95" />
+                    </label>
+                    <label className="config-field">
+                        <span>Math</span>
+                        <select defaultValue="plus">
+                            <option value="plus">Plus</option>
+                            <option value="minus">Minus</option>
+                            <option value="multiply">Multiply</option>
+                        </select>
+                    </label>
                 </div>
-                <div className="config-table">
-                    <div className="config-table-head">
-                        <span>Age Band</span>
-                        <span>Base Rate</span>
-                        <span>Risk Tier</span>
-                    </div>
-                    <div className="config-table-row">
-                        <span>18 - 30</span>
-                        <span>$42.00</span>
-                        <span>Standard</span>
-                    </div>
-                    <div className="config-table-row">
-                        <span>31 - 45</span>
-                        <span>$58.00</span>
-                        <span>Standard</span>
-                    </div>
-                    <div className="config-table-row">
-                        <span>46 - 60</span>
-                        <span>$79.00</span>
-                        <span>Preferred</span>
-                    </div>
-                </div>
-                <div className="config-helper">Add new bands to keep pricing aligned.</div>
             </section>
 
             <div className="config-actions">

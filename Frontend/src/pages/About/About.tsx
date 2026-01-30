@@ -1,4 +1,5 @@
 import AppTopbar from "../../components/AppTopbar/AppTopbar";
+import AppFooter from "../../components/AppFooter/AppFooter";
 import "./About.css";
 
 function About() {
@@ -28,6 +29,7 @@ function About() {
                     </div>
                 </section>
             </main>
+            <AppFooter />
         </div>
     );
 }

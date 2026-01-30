@@ -1,4 +1,5 @@
 import AppTopbar from "../../components/AppTopbar/AppTopbar";
+import AppFooter from "../../components/AppFooter/AppFooter";
 import "./Api.css";
 
 function Api() {
@@ -31,6 +32,7 @@ function Api() {
                     </div>
                 </section>
             </main>
+            <AppFooter />
         </div>
     );
 }

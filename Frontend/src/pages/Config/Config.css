@@ -248,6 +248,24 @@
     max-width: 960px;
 }
 
+.config-question-card {
+    background: var(--panel);
+    border-color: #d8e1ef;
+    border-radius: 18px;
+    padding: 2.2rem 2.4rem;
+    max-width: 980px;
+}
+
+.config-rate-card {
+    background: var(--panel);
+    border-color: #d8e1ef;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
 .config-card-header {
     display: flex;
     align-items: center;
@@ -377,6 +395,46 @@
     gap: 1.5rem 2.5rem;
 }
 
+.config-question-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 1.1fr) minmax(260px, 1fr);
+    grid-template-areas:
+        "question description"
+        "type description"
+        "page image";
+    gap: 1.4rem 2.2rem;
+}
+
+.config-rate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1.6rem 2.4rem;
+}
+
+.config-question-field {
+    margin: 0;
+}
+
+.config-question-field[data-area="question"] {
+    grid-area: question;
+}
+
+.config-question-field[data-area="description"] {
+    grid-area: description;
+}
+
+.config-question-field[data-area="type"] {
+    grid-area: type;
+}
+
+.config-question-field[data-area="page"] {
+    grid-area: page;
+}
+
+.config-question-field[data-area="image"] {
+    grid-area: image;
+}
+
 .config-field {
     display: flex;
     flex-direction: column;
@@ -385,7 +443,8 @@
 }
 
 .config-field input,
-.config-field textarea {
+.config-field textarea,
+.config-field select {
     border: 1px solid #9fb3cf;
     border-radius: 10px;
     padding: 0.7rem 0.9rem;
@@ -398,11 +457,29 @@
 }
 
 .config-field input:focus,
-.config-field textarea:focus {
+.config-field textarea:focus,
+.config-field select:focus {
     outline: none;
     border-color: var(--blue);
     box-shadow: 0 0 0 3px rgba(95, 183, 255, 0.25);
 }
+
+.config-question-card .config-field input,
+.config-question-card .config-field textarea,
+.config-question-card .config-field select {
+    background: #f3f7ff;
+    border-color: #9fb3cf;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+.config-question-card .config-field input[type="file"] {
+    padding: 0.5rem 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
 
 .config-field-note {
     margin-top: 2rem;
@@ -481,6 +558,25 @@
     }
 
     .config-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .config-question-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "question"
+            "description"
+            "type"
+            "page"
+            "image";
+    }
+
+    .config-rate-card {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .config-rate-grid {
         grid-template-columns: 1fr;
     }
 

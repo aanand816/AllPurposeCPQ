@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import AppTopbar from "../../components/AppTopbar/AppTopbar";
+import AppFooter from "../../components/AppFooter/AppFooter";
 import "./Config.css";
 
 type ConfigLayoutProps = {
@@ -52,42 +53,41 @@ function ConfigLayout({ title, children, activeSide, activeTab }: ConfigLayoutPr
                 <main className="config-main">
                     <div className="config-header">
                         <h1>{title}</h1>
-                        <div className="config-status">
-                            <span className="config-status-dot" />
-                            All Changes Saved
-                        </div>
                     </div>
 
-                    <div className="config-tabs">
-                        <NavLink
-                            className={`config-tab${activeTab === "product" ? " config-tab-active" : ""}`}
-                            to="/config/product"
-                        >
-                            Product
-                        </NavLink>
-                        <NavLink
-                            className={`config-tab${activeTab === "questions" ? " config-tab-active" : ""}`}
-                            to="/config/questions"
-                        >
-                            Questions
-                        </NavLink>
-                        <NavLink
-                            className={`config-tab${activeTab === "rates" ? " config-tab-active" : ""}`}
-                            to="/config/rates"
-                        >
-                            Rates
-                        </NavLink>
-                        <NavLink
-                            className={`config-tab${activeTab === "documents" ? " config-tab-active" : ""}`}
-                            to="/config/documents"
-                        >
-                            Documents
-                        </NavLink>
-                    </div>
+                    {activeSide === "app-settings" && (
+                        <div className="config-tabs">
+                            <NavLink
+                                className={`config-tab${activeTab === "product" ? " config-tab-active" : ""}`}
+                                to="/config/product"
+                            >
+                                Product
+                            </NavLink>
+                            <NavLink
+                                className={`config-tab${activeTab === "questions" ? " config-tab-active" : ""}`}
+                                to="/config/questions"
+                            >
+                                Questions
+                            </NavLink>
+                            <NavLink
+                                className={`config-tab${activeTab === "rates" ? " config-tab-active" : ""}`}
+                                to="/config/rates"
+                            >
+                                Rates
+                            </NavLink>
+                            <NavLink
+                                className={`config-tab${activeTab === "documents" ? " config-tab-active" : ""}`}
+                                to="/config/documents"
+                            >
+                                Documents
+                            </NavLink>
+                        </div>
+                    )}
 
                     {children}
                 </main>
             </div>
+            <AppFooter />
         </div>
     );
 }
