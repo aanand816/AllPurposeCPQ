@@ -3,7 +3,11 @@ import "./Config.css";
 
 function Questions() {
     return (
-        <ConfigLayout title="Define Product Questions" activeSide="app-settings" activeTab="questions">
+        <ConfigLayout
+            title="Quote Data: Questions"
+            activeSide="quote-data"
+            activeTab="questions"
+        >
             <section className="config-card config-question-card">
                 <div className="config-question-grid">
                     <label className="config-field config-question-field" data-area="question">

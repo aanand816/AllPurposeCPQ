@@ -3,7 +3,11 @@ import "./Config.css";
 
 function QuestionItems() {
     return (
-        <ConfigLayout title="Question Item Library" activeSide="question-items">
+        <ConfigLayout
+            title="Question Item Library"
+            activeSide="quote-data"
+            activeTab="questions"
+        >
             <section className="config-card">
                 <div className="config-card-header">
                     <h2>Reusable Questions</h2>

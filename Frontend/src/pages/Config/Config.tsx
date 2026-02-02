@@ -3,7 +3,11 @@ import ConfigLayout from "./ConfigLayout";
 
 function Config() {
     return (
-        <ConfigLayout title="Define New Product" activeSide="app-settings" activeTab="product">
+        <ConfigLayout
+            title="Quote Data: Products"
+            activeSide="quote-data"
+            activeTab="products"
+        >
             <section className="config-card">
                 <div className="config-form-grid">
                     <div className="config-field">
@@ -36,7 +40,7 @@ function Config() {
 
             <div className="config-actions">
                 <button className="config-action config-action-ghost">Back</button>
-                <button className="config-action config-action-primary">Next</button>
+                <button className="config-action config-action-primary">Save Product</button>
                 <button className="config-action config-action-danger">Cancel</button>
             </div>
         </ConfigLayout>

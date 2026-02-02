@@ -1,9 +1,13 @@
 import ConfigLayout from "./ConfigLayout";
 import "./Config.css";
 
-function Documents() {
+function Wordings() {
     return (
-        <ConfigLayout title="Attach Product Documents" activeSide="app-settings" activeTab="documents">
+        <ConfigLayout
+            title="Quote Data: Wordings"
+            activeSide="quote-data"
+            activeTab="wordings"
+        >
             <section className="config-card">
                 <div className="config-card-grid">
                     <div className="config-mini-card">
@@ -33,4 +37,4 @@ function Documents() {
     );
 }
 
-export default Documents;
+export default Wordings;

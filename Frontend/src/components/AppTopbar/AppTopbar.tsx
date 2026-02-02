@@ -45,9 +45,13 @@ function AppTopbar() {
                     Home
                 </NavLink>
                 {loggedIn && (
+                    // <NavLink
+                    //     className={`config-nav-link${isConfig ? " config-nav-active" : ""}`}
+                    //     to="/config/product"
+                    // >
                     <NavLink
                         className={`config-nav-link${isConfig ? " config-nav-active" : ""}`}
-                        to="/config/product"
+                        to="/config"
                     >
                         Config <span className="config-caret">▾</span>
                     </NavLink>

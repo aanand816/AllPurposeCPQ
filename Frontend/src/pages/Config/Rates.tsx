@@ -3,7 +3,7 @@ import "./Config.css";
 
 function Rates() {
     return (
-        <ConfigLayout title="Define Product Rates" activeSide="app-settings" activeTab="rates">
+        <ConfigLayout title="Quote Data: Rates" activeSide="quote-data" activeTab="rates">
             <section className="config-card config-rate-card">
                 <div className="config-rate-grid">
                     <label className="config-field">
