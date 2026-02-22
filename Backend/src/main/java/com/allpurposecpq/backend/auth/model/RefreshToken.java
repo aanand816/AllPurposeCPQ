@@ -1,41 +1,41 @@
 package com.allpurposecpq.backend.auth.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.data.relational.core.mapping.Column;
-
+import jakarta.persistence.*;
 import java.time.OffsetDateTime;
 
-@Table("REFRESH_TOKEN")
+@Entity
+@Table(name = "REFRESH_TOKEN")
 public class RefreshToken {
 
     @Id
-    @Column("ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
-    @Column("USER_ID")
-    private Long userId;
-
-    @Column("TOKEN")
+    @Column(name = "TOKEN", nullable = false, unique = true, length = 500)
     private String token;
 
-    @Column("EXPIRY_DATE")
+    @Column(name = "USER_ID", nullable = false)
+    private Long userId;
+
+    @Column(name = "EXPIRY_DATE", nullable = false)
     private OffsetDateTime expiryDate;
 
-    @Column("CREATED_DATE")
+    @Column(name = "CREATED_DATE")
     private OffsetDateTime createdDate;
 
-    @Column("REVOKED")
-    private Integer revoked;
+    // Constructors
+    public RefreshToken() {
+    }
 
-    @Column("IP_ADDRESS")
-    private String ipAddress;
+    public RefreshToken(String token, Long userId, OffsetDateTime expiryDate) {
+        this.token = token;
+        this.userId = userId;
+        this.expiryDate = expiryDate;
+        this.createdDate = OffsetDateTime.now();
+    }
 
-    @Column("USER_AGENT")
-    private String userAgent;
-
-    // getters and setters
-
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -44,20 +44,20 @@ public class RefreshToken {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public String getToken() {
         return token;
     }
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public OffsetDateTime getExpiryDate() {
@@ -74,29 +74,5 @@ public class RefreshToken {
 
     public void setCreatedDate(OffsetDateTime createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public Integer getRevoked() {
-        return revoked;
-    }
-
-    public void setRevoked(Integer revoked) {
-        this.revoked = revoked;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public String getUserAgent() {
-        return userAgent;
-    }
-
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
     }
 }

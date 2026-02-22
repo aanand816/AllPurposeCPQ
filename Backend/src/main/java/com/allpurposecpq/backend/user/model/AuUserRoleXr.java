@@ -1,23 +1,43 @@
 package com.allpurposecpq.backend.user.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.*;
 
-@Table("AU_USER_ROLE_XR")
+@Entity
+@Table(name = "AU_USER_ROLE_XR")
 public class AuUserRoleXr {
 
-// NOTE: This mapping is READ-ONLY.
-// The real primary key in Oracle is (USER_ID, ROLE_ID).
-// We mark USER_ID as @Id only to satisfy Spring Data JDBC.
-// Do NOT use this repository for inserts/updates/deletes.
-
     @Id
-    @Column("USER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+
+    @Column(name = "USER_ID", nullable = false)
     private Long userId;
 
-    @Column("ROLE_ID")
+    @Column(name = "ROLE_ID", nullable = false)
     private Long roleId;
+
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
+
+    // Constructors
+    public AuUserRoleXr() {
+    }
+
+    public AuUserRoleXr(Long userId, Long roleId) {
+        this.userId = userId;
+        this.roleId = roleId;
+        this.isActive = true;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getUserId() {
         return userId;
@@ -34,5 +54,12 @@ public class AuUserRoleXr {
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
-}
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+}

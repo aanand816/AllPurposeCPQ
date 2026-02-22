@@ -1,66 +1,65 @@
 package com.allpurposecpq.backend.user.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.data.relational.core.mapping.Column;
+import jakarta.persistence.*;
 
-import java.time.OffsetDateTime;
-
-@Table("AU_ROLE")
+@Entity
+@Table(name = "AU_ROLE")
 public class AuRole {
 
     @Id
-    @Column("ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
-    @Column("ACCESS_LEVEL")
-    private Integer accessLevel;
+    @Column(name = "ROLE_NAME", nullable = false, unique = true, length = 100)
+    private String roleName;
 
-    @Column("NAME")
-    private String name;
-
-    @Column("DESCRIPTION")
+    @Column(name = "DESCRIPTION", length = 500)
     private String description;
 
-    @Column("MODIFIED_BY")
-    private String modifiedBy;
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
 
-    @Column("MODIFIED_DATE")
-    private OffsetDateTime modifiedDate;
-
-    public void setAccessLevel(Integer accessLevel) {
-        this.accessLevel = accessLevel;
+    // Constructors
+    public AuRole() {
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
+    public AuRole(String roleName, String description) {
+        this.roleName = roleName;
         this.description = description;
+        this.isActive = true;
     }
 
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
+    // Getters and Setters
+    public Long getId() {
+        return id;
     }
 
-    public Integer getAccessLevel() {
-        return accessLevel;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getModifiedBy() {
-        return modifiedBy;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public OffsetDateTime getModifiedDate() {
-        return modifiedDate;
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 }

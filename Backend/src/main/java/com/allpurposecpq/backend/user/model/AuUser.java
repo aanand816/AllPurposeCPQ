@@ -1,110 +1,135 @@
 package com.allpurposecpq.backend.user.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.data.relational.core.mapping.Column;
-
+import jakarta.persistence.*;
 import java.time.OffsetDateTime;
 
-@Table("AU_USER")
+@Entity
+@Table(name = "AU_USER")
 public class AuUser {
 
     @Id
-    @Column("ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
-    @Column("DOMAIN_ID")
+    @Column(name = "DOMAIN_ID", nullable = false)
     private Long domainId;
 
-    @Column("CONTACT_ID")
-    private Long contactId;
-
-    @Column("USERNAME")
+    @Column(name = "USERNAME", nullable = false, unique = true, length = 100)
     private String username;
 
-    @Column("PASSWORD_HASH")
+    @Column(name = "EMAIL", nullable = false, unique = true, length = 150)
+    private String email;
+
+    @Column(name = "PASSWORD_HASH", nullable = false)
     private String passwordHash;
 
-    @Column("ENABLED")
-    private Integer enabled;
+    @Column(name = "FIRST_NAME", length = 50)
+    private String firstName;
 
-    @Column("FULL_NAME")
-    private String fullName;
+    @Column(name = "LAST_NAME", length = 50)
+    private String lastName;
 
-    @Column("MODIFIED_BY")
-    private String modifiedBy;
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
 
-    @Column("MODIFIED_DATE")
-    private OffsetDateTime modifiedDate;
+    @Column(name = "CREATED_DATE")
+    private OffsetDateTime createdDate;
 
-    public void setDomainId(Long domainId) {
-        this.domainId = domainId;
-    }
+    @Column(name = "UPDATED_DATE")
+    private OffsetDateTime updatedDate;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setContactId(Long contactId) {
-        this.contactId = contactId;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
-    public void setEnabled(Integer enabled) {
-        this.enabled = enabled;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public void setModifiedDate(OffsetDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
+    // Constructors
     public AuUser() {
-        super();
+    }
+
+    public AuUser(Long domainId, String username, String email, String passwordHash) {
+        this.domainId = domainId;
+        this.username = username;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.isActive = true;
+        this.createdDate = OffsetDateTime.now();
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getDomainId() {
         return domainId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Long getContactId() {
-        return contactId;
+    public void setDomainId(Long domainId) {
+        this.domainId = domainId;
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPasswordHash() {
         return passwordHash;
     }
 
-    public Integer getEnabled() {
-        return enabled;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getModifiedBy() {
-        return modifiedBy;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public OffsetDateTime getModifiedDate() {
-        return modifiedDate;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public OffsetDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(OffsetDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public OffsetDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(OffsetDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 }
